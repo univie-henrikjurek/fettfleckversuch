@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fettfleckversuch</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  <body>
+    <label class="ui-switch">
+      <input type="checkbox" id="theme-toggle"> Dark
+      <div class="slider">
+        <div class="circle"></div>
+      </div>
+    </label>
+
+    <h1>Fettfleckversuch</h1>
+    {% if image_url %}
+      <p>Wähle zwei Punkte auf dem Bild, um die Helligkeit zu vergleichen:</p>
+      <div id="image-container">
+          <img id="uploaded-image" src="{{ image_url }}" alt="Hochgeladenes Bild">
+          <canvas id="overlay"></canvas>
+      </div>
+<div id="results">
+<p>Technische Helligkeit</p>
+    <p id="inf1">-</p>
+	<p id="inf2">-</p>
+	<p>Menschliche Helligkeit</p>
+    <p id="human1">-</p>
+    <p id="human2">-</p>
+	<p>Differenzen</p>
+    <p id="diffInf">-</p>
+    <p id="diffHuman">-</p>
+</div>
+
+      <!-- btn to reset points -->
+      <button id="reset-btn">Punkte neu wählen</button>
+      <!-- btn to reset picture -->
+      <form action="{{ url_for('main.reset_image') }}" method="post" style="display:inline;">
+         <button type="submit">Neues Bild hochladen</button>
+      </form>
+    {% else %}
+      <form action="{{ url_for('main.upload') }}" method="post" enctype="multipart/form-data">
+          <input type="file" name="file" accept="image/*" required>
+          <button type="submit">Foto hochladen</button>
+      </form>
+    {% endif %}
+    
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+  </body>
+</html>
