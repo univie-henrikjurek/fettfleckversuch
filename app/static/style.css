@@ -1,0 +1,21 @@
+/* center image container */
+#image-container {
+    position: relative;
+    display: block;
+    max-width: 90%; /* max with of the container */
+    margin: 0 auto;
+    border: 1px solid #ccc;
+}
+
+/* image should stretch to container width */
+#image-container img {
+    width: 100%;
+    height: auto;
+}
+
+/* overlay stretches automatically */
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
