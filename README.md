@@ -7,7 +7,7 @@ im Repo sichtbar
 
 # Requirements
 Written with python3.11
-Flask>=2.0
-Pillow>=9.0
 
-# 
+Flask>=2.0
+
+Pillow>=9.0
